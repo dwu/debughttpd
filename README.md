@@ -5,13 +5,15 @@ Simple logging HTTP server for debugging purposes
 ```shell
 Usage of ./debughttpd:
   -a string
-    	server address, format: '<hostname|ip-address>:<port>' (default ":8080")
+        server address, format: '<hostname|ip-address>:<port>' (default ":8080")
   -c string
-    	content to return to the client; given as string value on the command line
+        content to return to the client; given as string value on the command line
   -cf string
-    	filename of the content to return to the client
+        filename of the content to return to the client
   -ct string
-    	content type of the response (default "text/plain")
+        content type of the response (default "text/plain")
+  -s int
+        status code of the response (default 200)
 ```
 
 ## Usage example

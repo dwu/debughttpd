@@ -13,12 +13,14 @@ var host string
 var content string
 var contentFile string
 var contentType string
+var statusCode int
 
 func main() {
 	flag.StringVar(&host, "a", ":8080", "server address, format: '<hostname|ip-address>:<port>'")
 	flag.StringVar(&content, "c", "", "content to return to the client; given as string value on the command line")
 	flag.StringVar(&contentFile, "cf", "", "filename of the content to return to the client")
 	flag.StringVar(&contentType, "ct", "text/plain", "content type of the response")
+	flag.IntVar(&statusCode, "s", 200, "status code of the response")
 
 	flag.Parse()
 
@@ -57,6 +59,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 		string(dump),
 	)
 
+	w.WriteHeader(statusCode)
 	w.Header().Add("Content-Type", contentType)
 	w.Write([]byte(content))
 }
